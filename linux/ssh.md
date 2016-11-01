@@ -1,8 +1,8 @@
 ssh -T -v git@github.com的登录出现
 
 
-OpenSSH_7.3p1, OpenSSL 1.0.2j  26 Sep 2016
-debug1: Reading configuration data /etc/ssh/ssh_config
+    OpenSSH_7.3p1, OpenSSL 1.0.2j  26 Sep 2016
+    debug1: Reading configuration data /etc/ssh/ssh_config
 debug1: Connecting to github.com [1.111.11.111] port 22.
 debug1: Connection established.
 debug1: identity file /home/arch/.ssh/id_rsa type 1
