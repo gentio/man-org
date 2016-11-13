@@ -3,7 +3,7 @@
 ## 牛顿法开平方
 牛顿法本质是一种迭代解法，在数值分析里是一种方法，出现于《Hacker Delight》里作为一种整数求根的实现。
 
-‘
+
     int isqrt(unsigned x)
     {
         unsigned x1;
@@ -26,7 +26,7 @@
         return g0;
     }
  
-’
+
 ## 二分查找树
 
 ## 二分s
