@@ -1,0 +1,26 @@
+
+* the error of the result
+** model error
+the error comes from the difference when we make model.
+
+The math model come from the practial, having some difference.
+** the measuring error
+we get the parameter by measuring
+
+** the truncatation error
+The numerial method we use in the model is an approximate method, so it have some error with the practial model.
+
+** round error
+
+* absolute error and relative error
+** absolute error
+give a real number, its approximate is x^*, x-x^* is the value between the approximate value and real value. we give it a name
+
+\begin{equation}
+\varepsilon  = x^* - x
+\end{equation}
+we can't now the precise value. So estimate a value. If exist a postive number \eta
+\begin{equation}
+|\varepsilon(x)| \leq \eta
+\end{equation}
+we say *\eta*  is the absolute limit of x^*

@@ -34,4 +34,20 @@
 
 简单的二分查找法计算整数平方根
 
+    int isqrt(unsigned x)
+    {
+        unsigned a, b, m;
 
+        a = 1;
+        b = (x >> 5) + 8;
+        if (b > 65535)
+            b = 65535;
+        do {
+            m = (a + b) >> 1;
+            if (m*m > x)
+                b = m - 1;
+            else
+                a = m + 1;
+        } while (b >= a);
+        return a - 1;
+    }
