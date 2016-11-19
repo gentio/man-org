@@ -1,0 +1,22 @@
+使用\documentclass{article} + \usepackage{xeCJK}
+\document{ctexart}以支持中文。 
+%使用evince显示不了产生的中文，但是foxit和mupdf等可以显示出来。
+
+\usepackage[top=1.4cm,bottom=2cm,left=2cm,right=1.68cm]{geometry} 设置版面格式
+
+\usepackage{graphicx} + \includegraphics[scale=0.7]{matlab.jpg}插入图片
+
+\begin{center} 居中 \end{center} 设置居中
+
+\textbf{文本} 加粗
+
+\begin{verbatim} + \end{verbatim} 插入代码
+
+\input 与 \include 的区别是\input 不产生新页，而\include 产生。
+这两条语句可以将文章分成几部分。
+
+学习建议：
+1.lshort cn可以看，然后到ctex的网站看一些包的描述。刘海洋的latex入门可以一看。
+2.texdoc+宏包名字可以看用法。
+3.latexstudio网站是个不错的中文网站，不过模板有些编译不过。
+
