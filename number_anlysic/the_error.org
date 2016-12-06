@@ -24,3 +24,8 @@ we can't now the precise value. So estimate a value. If exist a postive number \
 |\varepsilon(x)| \leq \eta
 \end{equation}
 we say *\eta*  is the absolute limit of x^*
+
+* the vaild value
+  A number is give by the layout:
+\begin{equation}
+ =a_0 a_1
