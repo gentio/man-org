@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-07 Wed 19:36 -->
+<!-- 2016-12-07 Wed 12:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
@@ -224,28 +224,6 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -253,100 +231,231 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9376390">1. the error of the result</a>
+<li><a href="#org57006f4">1. The linux kernle driver program is easy.</a></li>
+<li><a href="#org472b15b">2. How to write a linux driver ?</a>
 <ul>
-<li><a href="#org9e127de">1.1. model error</a></li>
-<li><a href="#org69b2323">1.2. the measuring error</a></li>
-<li><a href="#org50bc552">1.3. the truncatation error</a></li>
-<li><a href="#orgf138444">1.4. round error</a></li>
+<li><a href="#org7d16eec">2.1. This is a dummy driver from the book  Master the embedded linux program.</a></li>
 </ul>
 </li>
-<li><a href="#org0ae6f48">2. absolute error and relative error</a>
+<li><a href="#org1d51946">3. how to compile a linux driver</a>
 <ul>
-<li><a href="#org5a97ed8">2.1. absolute error</a></li>
+<li><a href="#orgf5659f9">3.1. change the kconfig and the makefile of the kernel</a></li>
+<li><a href="#org915f5bc">3.2. a indepent directory</a></li>
+<li><a href="#org16a48c3">3.3. a more power makefile outside kernel build.</a></li>
 </ul>
 </li>
-<li><a href="#org2ff3b03">3. the vaild value</a></li>
 </ul>
 </div>
 </div>
-<div id="org9376390" class="outline-2">
-<h2 id="org9376390"><span class="section-number-2">1</span> the error of the result</h2>
+<div id="org57006f4" class="outline-2">
+<h2 id="org57006f4"><span class="section-number-2">1</span> The linux kernle driver program is easy.</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="org9e127de" class="outline-3">
-<h3 id="org9e127de"><span class="section-number-3">1.1</span> model error</h3>
-<div class="outline-text-3" id="text-1-1">
 <p>
-the error comes from the difference when we make model.
+The code of linux kernel driver is easy to write. Although it was said that it is geek, it is eaiser than the app program.
 </p>
 
 <p>
-The math model come from the practial, having some difference.
-</p>
-</div>
-</div>
-<div id="org69b2323" class="outline-3">
-<h3 id="org69b2323"><span class="section-number-3">1.2</span> the measuring error</h3>
-<div class="outline-text-3" id="text-1-2">
-<p>
-we get the parameter by measuring
+The API of linux driver is stable. It differs from the api of the app, such as ruby app or python.
 </p>
 </div>
 </div>
 
-<div id="org50bc552" class="outline-3">
-<h3 id="org50bc552"><span class="section-number-3">1.3</span> the truncatation error</h3>
-<div class="outline-text-3" id="text-1-3">
-<p>
-The numerial method we use in the model is an approximate method, so it have some error with the practial model.
-</p>
-</div>
-</div>
-
-<div id="orgf138444" class="outline-3">
-<h3 id="orgf138444"><span class="section-number-3">1.4</span> round error</h3>
-</div>
-</div>
-
-<div id="org0ae6f48" class="outline-2">
-<h2 id="org0ae6f48"><span class="section-number-2">2</span> absolute error and relative error</h2>
+<div id="org472b15b" class="outline-2">
+<h2 id="org472b15b"><span class="section-number-2">2</span> How to write a linux driver ?</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="org5a97ed8" class="outline-3">
-<h3 id="org5a97ed8"><span class="section-number-3">2.1</span> absolute error</h3>
+<p>
+There are some template to wite a driver.
+</p>
+<pre class="example">
+#include &lt;linux/init.h&gt;
+#include &lt;linux/module.h&gt;
+
+static ssize_t xxx_read(struct file *file,
+                        const char *buffer, size_t length,
+                        loff_t *offset)
+{
+  /*   something */
+}
+static ssize_t xxx_write(struct file *file,
+                        const char *buffer, size_t length,
+                        loff_t *offset)
+{
+  /*   something */
+}
+/ * to make the kernel know the method while the event happan */
+struct file_operations dummy_ops = {
+       .owner = THIS_MODULE, /* UNUSUALLY */
+       .open  = xxx_open;
+       .release = xxx_release;
+       .read    = xxx_read;
+       .write   = xxx_write;
+};
+int __init xxx_init(void) /* the init function. */
+{
+}
+void __exit xxx_exit(void) /* the exit function */
+{
+}
+module_init(xxx_init);
+module_exit(xxx_exit);
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Gentio");
+</pre>
+</div>
+<div id="org7d16eec" class="outline-3">
+<h3 id="org7d16eec"><span class="section-number-3">2.1</span> This is a dummy driver from the book  Master the embedded linux program.</h3>
 <div class="outline-text-3" id="text-2-1">
-<p>
-give a real number, its approximate is * x<sup>*</sup>, x-x<sup>*</sup> * is the value between the approximate value and real value. we give it a name
-</p>
+<pre class="example">
+#include &lt;linux/kernel.h&gt;
+#include &lt;linux/module.h&gt;
+#include &lt;linux/init.h&gt;
+#include &lt;linux/fs.h&gt;
+#include &lt;linux/device.h&gt;
+#define DEVICE_NAME "dummy"
+#define MAJOR_NUM 42
+#define NUM_DEVICES 4
 
-\begin{equation}
-\varepsilon  = x^* - x
-\end{equation}
-<p>
-we can't now the precise value. So estimate a value. If exist a postive number &eta;
-</p>
-\begin{equation}
-|\varepsilon(x)| \leq \eta
-\end{equation}
-<p>
-we say <b>&eta;</b>  is the absolute limit of x<sup>*</sup>
-</p>
+static struct class *dummy_class;
+static int dummy_open(struct inode *inode, struct file *file)
+{
+    pr_info("%s\n", __func__);
+    return 0;
+}
+
+static int dummy_release(struct inode *inode, struct file *file)
+{
+    pr_info("%s\n", __func__);
+    return 0;
+}
+static ssize_t dummy_read(struct file *file,
+                          char *buffer, size_t length,
+                          loff_t *offset)
+{
+    pr_info("%s %u\n", __func__, length);
+    return 0;
+}
+static ssize_t dummy_write(struct file *file,
+                          const char *buffer, size_t length,
+                          loff_t *offset)
+{
+    pr_info("%s %u\n", __func__, length);
+    return 0;
+}
+struct file_operations dummy_fops = {
+    .owner  = THIS_MODULE,
+    .open   = dummy_open,
+    .release = dummy_release,
+    .read   = dummy_read,
+    .write  = dummy_write,
+};
+
+int __init dummy_init(void)
+{
+    int ret;
+    int i;
+    printk("Dummy  loaded\n");
+    ret = register_chrdev(MAJOR_NUM, DEVICE_NAME, &amp;dummy_fops);
+    if (ret != 0)
+        return ret;
+    dummy_class = class_create(THIS_MODULE, DEVICE_NAME);
+    for (i = 0; i &lt; NUM_DEVICES; i++) {
+        device_create(dummy_class, NULL, MKDEV(MAJOR_NUM, i), NULL, "dummy%d",  i);
+    }
+    return 0;
+}
+void __exit dummy_exit(void)
+{
+    int i;
+    for (i = 0; i &lt; NUM_DEVICES; i++) {
+        device_destroy(dummy_class, MKDEV(MAJOR_NUM, i));
+    }
+    class_destroy(dummy_class);
+    unregister_chrdev(MAJOR_NUM, DEVICE_NAME);
+    printk("Dummy  unloaded\n");
+}
+
+module_init(dummy_init);
+module_exit(dummy_exit);
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Gentio");
+MODULE_DESCRIPTION("A dummy driver");
+</pre>
 </div>
 </div>
 </div>
 
-<div id="org2ff3b03" class="outline-2">
-<h2 id="org2ff3b03"><span class="section-number-2">3</span> the vaild value</h2>
+<div id="org1d51946" class="outline-2">
+<h2 id="org1d51946"><span class="section-number-2">3</span> how to compile a linux driver</h2>
 <div class="outline-text-2" id="text-3">
 <p>
- A number is give by the layout:
-\begin{equation}
-=a<sub>0</sub> a<sub>1</sub>
+There are three kinds of methods to compile a linux driver.
 </p>
+</div>
+<div id="orgf5659f9" class="outline-3">
+<h3 id="orgf5659f9"><span class="section-number-3">3.1</span> change the kconfig and the makefile of the kernel</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+For expamle, you have a module source naming hello.c in drivers/misc, you can do it like:
+Add the Kconfig and the makefile in the misc directory
+For expamle, you have a module source naming hello.c in drivers/misc, you can do it like:
+Add the Kconfig and the makefile in the misc directory.
+</p>
+</div>
+</div>
+
+<div id="org915f5bc" class="outline-3">
+<h3 id="org915f5bc"><span class="section-number-3">3.2</span> a indepent directory</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+In this directory, you have a hello.c. You add a makefile file like:
+</p>
+<pre class="example">
+obj-m := hello.o
+module-objs := hello.o
+</pre>
+<p>
+and you type a command in this directory:
+</p>
+<pre class="example">
+make -C /you_kernel_build_directory M=`pwd` modules
+</pre>
+<p>
+For me, my kernel build directory is located <i>usr/src/linux-4.8.4</i>, so i do it:
+</p>
+<pre class="example">
+$ make -C /usr/src/linux-4.8.4/ M=`pwd` modules
+</pre>
+<p>
+After do it, you can see the hello.ko in your hello directory.
+insmod with a root premmit, you can see a message from the terminal or dmesg.
+</p>
+</div>
+</div>
+
+<div id="org16a48c3" class="outline-3">
+<h3 id="org16a48c3"><span class="section-number-3">3.3</span> a more power makefile outside kernel build.</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+The kernel developer make a more efficient method to do a compile.(the code come from ldd 3)
+</p>
+<pre class="example">
+#if define the KERNELRELEASE, it is call from the build system.
+ifneq ($(KERNELRELEASE),)
+  obj-m := hello.o
+# if no define that we call ourself.
+else
+  KERNELDIR ?= /lib/modules/$(shell uname -r)/build
+  PWD := $(shell pwd)
+default:
+  $(MAKE) -C $(KERNELDIR) M=$(PWD) modules
+endif
+</pre>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-07 Wed 19:36</p>
+<p class="date">Created: 2016-12-07 Wed 12:51</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

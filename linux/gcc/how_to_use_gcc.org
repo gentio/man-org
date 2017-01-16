@@ -1,0 +1,162 @@
+* Some envirenment variable
+There are some envirenment value to decide the link method.
+
+C_INCLUDE_PATH (for c++, CPLUS_INCLUDE_PATH) tell gcc where to find the header
+
+LIBRARY_PATH tell gcc where to find the lib
+
+You can use the command only without setting  the envirenment sush as:
+#+begin_src
+$gcc -I. -I/usr/include -L. -L/lib helloworld.c -lm
+#+end_src
+A point must get: the option "-lm" is located in the end.
+
+LD_LIBRARY_PATH is a variable to tell the loader where to load the shared lib. Also, you can link they at the first like this.
+#+begin_src
+gcc -Wall -I. dbmain.c /opt/gdbm/lib/libgdbm.a
+#+end_src
+#+begin_src
+gcc -Wall -I. dbmain.c /opt/gdbm/lib/libgdbm.so
+#+end_src
+* The c language standards
+** ANSI/ISO
+ANSI/ISO is the standard c. The gcc support the ansi c. On the same time, gcc have some external features.
+*** some key
+like asm, inline, typeof, unix and vax. and so on. If you use the "char asm[100];" in the c file and compile it with the GNU C extensions, it will give you a error.
+
+**** the marco definition M_PI
+The M_PI is not part of ANSI/ISO standard(it comes from BSD version of unix).
+
+All ansi standard C file can be compiled with the option "gcc -ansi"
+
+On the other hand, the GNU C extensions give you more convience. You can compile the program using ANSI/ISO C, by using the extension in the C library itselt.
+#+begin_src
+gcc -Wall -ansi -D_GNU_SOURCE pi.c
+#+end_src
+with doing this, you can get the M_PI value. (More like _XOPEN_SOURCE, _POSIX_SOURCE, see the gcc manual.)
+
+You can compile a c file with strict ANSI/ISO
+#+begin_src
+gcc -Wall -ansi -pedantic gnuarray.c
+#+end_src
+some option to choose specific standard. -std=c89 or -std=iso9899:1990
+
+-std=iso9899:199409
+
+-std=c99 or -std=iso9899:1999
+
+* The warning option
+You can choose more option choose option to let the gcc
+
+-Wcomment (included in -Wall)
+    This option warns about nested comments. Nested comments typically arise when a section of code containing comments is later commented out:
+#+begin_src
+    /* commented out
+    double x = 1.23 ; /* x-position */
+    */
+#+end_src
+    Nested comments can be a source of confusion--the safe way to "comment out" a section of code containing comments is to surround it with the preprocessor directive #if 0 ... #endif:
+
+#+begin_src
+    /* commented out */
+    #if 0
+    double x = 1.23 ; /* x-position */
+    #endif
+#+end_src
+-Wformat (included in -Wall)
+    This option warns about the incorrect use of format strings in functions such as printf and scanf, where the format specifier does not agree with the type of the corresponding function argument.
+
+-Wunused (included in -Wall)
+    This option warns about unused variables. When a variable is declared but not used this can be the result of another variable being accidentally substituted in its place. If the variable is genuinely not needed it can be removed from the source code.
+
+-Wimplicit (included in -Wall)
+    This option warns about any functions that are used without being declared. The most common reason for a function to be used without being declared is forgetting to include a header file.
+
+-Wreturn-type (included in -Wall)
+    This option warns about functions that are defined without a return type but not declared void. It also catches empty return statements in functions that are not declared void. For example, the following program does not use an explicit return value:
+
+#+begin_src
+    #include <stdio.h>
+
+    int
+    main (void)
+    {
+      printf ("hello world\n");
+      return;
+    }
+#+end_src
+
+    The lack of a return value in the code above could be the result of an accidental omission by the programmer--the value returned by the main function is actually the return value of the printf function (the number of characters printed). To avoid ambiguity, it is preferable to use an explicit value in the return statement, either as a variable or a constant, such as return 0.
+
+more option plese see the [[shell:mupdf%20~/doc/arch/gcc.pdf%2067][Gcc waring options]]
+* using the preprocessor
+** define marco
+It is eqal
+#+begin_src
+#include <stdio.h>
+int main(void)
+{
+#ifdef TEST
+    printf("Test mode\n");
+#endif
+    printf("Running ...\n");
+    return 0;
+}
+#+end_src
+
+#+begin_src
+$gcc -Wall -DTEST dtest.c
+#+end_src
+like using GNU_SOURCE
+the option -DMORCO can get the effect using in the file.
+** the temp file
+#+begin_src
+$gcc -E hello.c
+$gcc -c -save-temps hello.c
+#+end_src
+the "-E" option can propocess the c file.
+
+the "-save-temps" can save the temp file include ".s" ".o" ".i"
+* Compile for debug
+the option "-g"
+
+when a program segment, it give a core when the "ulimit -c unlimited" is setting.
+
+You can debugging the code with
+#+begin_src
+$gdb program program-core
+#+end_src
+* compiling with optimization
+** a example CSE
+common subexpression elimination(CSE)
+It cut down the common expression
+#+begin_src
+x = cos(v)*(1+sin(u/2)) + sin(w)*sin(u/2)
+#+end_src
+#+begin_src
+t = sin(u/2)
+x = cos(v)*t + sin(w)*t
+#+end_src
+** inline funtion
+** speed-space tradeoff
+*** loop unrolling
+** scheduling
+the cpu allow one or more new instructions to start executing before others have finished.
+** the optimization levels
+-O or -O1
+
+-O2
+
+-O3
+
+-funroll-loops
+
+-Os
+
+more see [[shell:mupdf%20~/doc/arch/gcc.pdf%20115][Gcc optimization Options]]
+
+*** the suggestion for optimazation with debug
+The Gcc can compile the  program use optimaztation in combination with the debug option. Many other compiler  do no allow this.
+
+I have a question. If the -O2 option is trun on and its optimization may be change the code and the bug may occur in this case. So the suggestion that debug with -O0 and release wiht -O2?
+** compiling program cimbination the optimization and wall

@@ -14,7 +14,7 @@ The numerial method we use in the model is an approximate method, so it have som
 
 * absolute error and relative error
 ** absolute error
-give a real number, its approximate is x^*, x-x^* is the value between the approximate value and real value. we give it a name
+give a real number, its approximate is * x^*, x-x^* * is the value between the approximate value and real value. we give it a name
 
 \begin{equation}
 \varepsilon  = x^* - x

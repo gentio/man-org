@@ -1,0 +1,45 @@
+* defintion
+The ncurses is a tool to help user write console char in the termainal. It provides some API to  help create a console program.
+* how to use
+#+begin_src
+#include <ncurses.h>
+#+end_src
+use the "ncurses.h" header file to define the marco and function.
+use the "gcc -o example example.c -lncurses" to link with the libncurses.
+* example
+** The program method introdution
+http://invisible-island.net/ncurses/NCURSES-Programming-HOWTO.html
+This is a website that help you to learn the basic program using the ncurses.
+
+That are also some example program to display the ncurses. You can down from this website.
+http://invisible-island.net/ncurses/ncurses-examples.html
+* some record
+#+begin_src
+initscr()   // start curses mode
+printw("hello world !!") // like printf in libc, print a format string
+refresh() //print it on  to real screen. Think about flush function.
+getch() // to delay. wait for user input.
+endwin() // exit the curses mode.
+echo(); noecho(); //  trun on the echo, turn off the echo
+keypad(stdsrc, TRUE); // enable the function keys like <F1>
+attron(A_BOLD) attroff(A_BOLD) // enable some features of the curses mode.
+#+end_src
+These are some function using in the method windows.
+#+begin_src
+wprintw(win, "This is a window.") // print a message in a partular window. more see-->
+#+end_src
+** The print function with x, y postion.
+#+begin_src
+mvprintw(y, x, format string); // you can move to (y, x) and print string in this postion.
+#+end_src
+** give the (y, x)
+You can get your postion with the function getyx(win, int y, int x). This is a less funtion (marco ?) You only pass the y and x int instead of the pointer of them.
+
+#+begin_src
+getmaxyx(win, y, x) // get the the value of y and x
+** the input function.
+scanw
+
+** the attributes function
+*** the differences of the attron()/attroff() and attrset
+the attrset set the value of the whole of the curses. the attron and attroff only trun a feature we pass it.

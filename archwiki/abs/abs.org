@@ -1,0 +1,18 @@
+* the speed
+the abs configure file is located /etc/abs.conf
+
+At the first, the abs server is default "rsync.archlinux.org", but it takes a long time to download a little source package.
+
+Change the Server to "mirrirs.ustc.edu.cn" or others you like. the speed up.
+
+* the gpg sign.
+The package is sign with pgp. Only you trust the sign, you can compile the source with the makepkg.
+#+begin_src
+$ gpg --recv-keys <KEYID>
+$ gog --lsign <KEYID>
+#+end_src
+The Keyid can be found in the PKGBUILD.
+
+I have a question. If the kernel config can be change by myself, but the makepkg will check the sign of the config.x86-64. How can I change it?
+
+So finally I do a tradnational compilation.

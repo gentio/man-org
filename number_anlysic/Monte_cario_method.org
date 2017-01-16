@@ -1,0 +1,5 @@
+* Origin
+The monte cario method is a method to simulate statistic.
+
+** Basic
+E is a

@@ -1,0 +1,4 @@
+* The basic
+#+begin_src
+helloworld: helloworld.c
+    cc -o helloworld helloworld.c

@@ -1,0 +1,98 @@
+Table of Contents
+_________________
+
+1 defintion
+2 how to use
+3 example
+.. 3.1 The program method introdution
+4 some record
+.. 4.1 The print function with x, y postion.
+.. 4.2 give the (y, x)
+.. 4.3 the input function.
+.. 4.4 the attributes function
+..... 4.4.1 the differences of the attron()/attroff() and attrset
+
+
+1 defintion
+===========
+
+  The ncurses is a tool to help user write console char in the
+  termainal. It provides some API to help create a console program.
+
+
+2 how to use
+============
+
+  ,----
+  | #include <ncurses.h>
+  `----
+  use the "ncurses.h" header file to define the marco and function. use
+  the "gcc -o example example.c -lncurses" to link with the libncurses.
+
+
+3 example
+=========
+
+3.1 The program method introdution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  [http://invisible-island.net/ncurses/NCURSES-Programming-HOWTO.html]
+  This is a website that help you to learn the basic program using the
+  ncurses.
+
+  That are also some example program to display the ncurses. You can
+  down from this website.
+  [http://invisible-island.net/ncurses/ncurses-examples.html]
+
+
+4 some record
+=============
+
+  ,----
+  | initscr()   // start curses mode
+  | printw("hello world !!") // like printf in libc, print a format string
+  | refresh() //print it on  to real screen. Think about flush function.
+  | getch() // to delay. wait for user input.
+  | endwin() // exit the curses mode.
+  | echo(); noecho(); //  trun on the echo, turn off the echo
+  | keypad(stdsrc, TRUE); // enable the function keys like <F1>
+  | attron(A_BOLD) attroff(A_BOLD) // enable some features of the curses mode.
+  `----
+  These are some function using in the method windows.
+  ,----
+  | wprintw(win, "This is a window.") // print a message in a partular window. more see-->
+  `----
+
+
+4.1 The print function with x, y postion.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  ,----
+  | mvprintw(y, x, format string); // you can move to (y, x) and print string in this postion.
+  `----
+
+
+4.2 give the (y, x)
+~~~~~~~~~~~~~~~~~~~
+
+  You can get your postion with the function getyx(win, int y, int x).
+  This is a less funtion (marco ?) You only pass the y and x int instead
+  of the pointer of them.
+
+  #+begin_src getmaxyx(win, y, x) // get the the value of y and x
+
+
+4.3 the input function.
+~~~~~~~~~~~~~~~~~~~~~~~
+
+  scanw
+
+
+4.4 the attributes function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+4.4.1 the differences of the attron()/attroff() and attrset
+-----------------------------------------------------------
+
+  the attrset set the value of the whole of the curses. the attron and
+  attroff only trun a feature we pass it.

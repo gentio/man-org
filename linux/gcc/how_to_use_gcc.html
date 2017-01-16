@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-12-27 Tue 22:24 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd33f423">1. Some envirenment variable</a></li>
+<li><a href="#orgb5493ae">2. The c language standards</a>
+<ul>
+<li><a href="#orgf502c6f">2.1. ANSI/ISO</a>
+<ul>
+<li><a href="#org9f32a6d">2.1.1. some key</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org2e9d9d8">3. The warning option</a></li>
+<li><a href="#orgf5f8020">4. using the preprocessor</a>
+<ul>
+<li><a href="#org3a93f59">4.1. define marco</a></li>
+<li><a href="#org85d194a">4.2. the temp file</a></li>
+</ul>
+</li>
+<li><a href="#org2e53e0a">5. Compile for debug</a></li>
+<li><a href="#org881fb3b">6. compiling with optimization</a>
+<ul>
+<li><a href="#org525cd79">6.1. a example CSE</a></li>
+<li><a href="#orgd111496">6.2. inline funtion</a></li>
+<li><a href="#org07b2aff">6.3. speed-space tradeoff</a>
+<ul>
+<li><a href="#orgbd6b79e">6.3.1. loop unrolling</a></li>
+</ul>
+</li>
+<li><a href="#org38d6934">6.4. scheduling</a></li>
+<li><a href="#org02b9f44">6.5. the optimization levels</a>
+<ul>
+<li><a href="#orgf2ade61">6.5.1. the suggestion for optimazation with debug</a></li>
+</ul>
+</li>
+<li><a href="#org370edb7">6.6. compiling program cimbination the optimization and wall</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="orgd33f423" class="outline-2">
+<h2 id="orgd33f423"><span class="section-number-2">1</span> Some envirenment variable</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+There are some envirenment value to decide the link method.
+</p>
+
+<p>
+C<sub>INCLUDE</sub><sub>PATH</sub> (for c++, CPLUS<sub>INCLUDE</sub><sub>PATH</sub>) tell gcc where to find the header
+</p>
+
+<p>
+LIBRARY<sub>PATH</sub> tell gcc where to find the lib
+</p>
+
+<p>
+You can use the command only without setting  the envirenment sush as:
+</p>
+<pre class="example">
+$gcc -I. -I/usr/include -L. -L/lib helloworld.c -lm
+</pre>
+<p>
+A point must get: the option "-lm" is located in the end.
+</p>
+
+<p>
+LD<sub>LIBRARY</sub><sub>PATH</sub> is a variable to tell the loader where to load the shared lib. Also, you can link they at the first like this.
+</p>
+<pre class="example">
+gcc -Wall -I. dbmain.c /opt/gdbm/lib/libgdbm.a
+</pre>
+<pre class="example">
+gcc -Wall -I. dbmain.c /opt/gdbm/lib/libgdbm.so
+</pre>
+</div>
+</div>
+<div id="orgb5493ae" class="outline-2">
+<h2 id="orgb5493ae"><span class="section-number-2">2</span> The c language standards</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="orgf502c6f" class="outline-3">
+<h3 id="orgf502c6f"><span class="section-number-3">2.1</span> ANSI/ISO</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+ANSI/ISO is the standard c. The gcc support the ansi c. On the same time, gcc have some external features.
+</p>
+</div>
+<div id="org9f32a6d" class="outline-4">
+<h4 id="org9f32a6d"><span class="section-number-4">2.1.1</span> some key</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+like asm, inline, typeof, unix and vax. and so on. If you use the "char asm[100];" in the c file and compile it with the GNU C extensions, it will give you a error.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="org16d8543"></a>the marco definition M<sub>PI</sub><br  /><div class="outline-text-5" id="text-2-1-1-1">
+<p>
+The M<sub>PI</sub> is not part of ANSI/ISO standard(it comes from BSD version of unix).
+</p>
+
+<p>
+All ansi standard C file can be compiled with the option "gcc -ansi"
+</p>
+
+<p>
+On the other hand, the GNU C extensions give you more convience. You can compile the program using ANSI/ISO C, by using the extension in the C library itselt.
+</p>
+<pre class="example">
+gcc -Wall -ansi -D_GNU_SOURCE pi.c
+</pre>
+<p>
+with doing this, you can get the M<sub>PI</sub> value. (More like _XOPEN<sub>SOURCE</sub>, _POSIX<sub>SOURCE</sub>, see the gcc manual.)
+</p>
+
+<p>
+You can compile a c file with strict ANSI/ISO
+</p>
+<pre class="example">
+gcc -Wall -ansi -pedantic gnuarray.c
+</pre>
+<p>
+some option to choose specific standard. -std=c89 or -std=iso9899:1990
+</p>
+
+<p>
+-std=iso9899:199409
+</p>
+
+<p>
+-std=c99 or -std=iso9899:1999
+</p>
+</div></li></ol>
+</div>
+</div>
+</div>
+
+<div id="org2e9d9d8" class="outline-2">
+<h2 id="org2e9d9d8"><span class="section-number-2">3</span> The warning option</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+You can choose more option choose option to let the gcc
+</p>
+
+<p>
+-Wcomment (included in -Wall)
+    This option warns about nested comments. Nested comments typically arise when a section of code containing comments is later commented out:
+</p>
+<pre class="example">
+/* commented out
+double x = 1.23 ; /* x-position */
+*/
+</pre>
+<p>
+Nested comments can be a source of confusion&#x2013;the safe way to "comment out" a section of code containing comments is to surround it with the preprocessor directive #if 0 &#x2026; #endif:
+</p>
+
+<pre class="example">
+/* commented out */
+#if 0
+double x = 1.23 ; /* x-position */
+#endif
+</pre>
+<p>
+-Wformat (included in -Wall)
+    This option warns about the incorrect use of format strings in functions such as printf and scanf, where the format specifier does not agree with the type of the corresponding function argument.
+</p>
+
+<p>
+-Wunused (included in -Wall)
+    This option warns about unused variables. When a variable is declared but not used this can be the result of another variable being accidentally substituted in its place. If the variable is genuinely not needed it can be removed from the source code.
+</p>
+
+<p>
+-Wimplicit (included in -Wall)
+    This option warns about any functions that are used without being declared. The most common reason for a function to be used without being declared is forgetting to include a header file.
+</p>
+
+<p>
+-Wreturn-type (included in -Wall)
+    This option warns about functions that are defined without a return type but not declared void. It also catches empty return statements in functions that are not declared void. For example, the following program does not use an explicit return value:
+</p>
+
+<pre class="example">
+#include &lt;stdio.h&gt;
+
+int
+main (void)
+{
+  printf ("hello world\n");
+  return;
+}
+</pre>
+
+<p>
+The lack of a return value in the code above could be the result of an accidental omission by the programmer&#x2013;the value returned by the main function is actually the return value of the printf function (the number of characters printed). To avoid ambiguity, it is preferable to use an explicit value in the return statement, either as a variable or a constant, such as return 0.
+</p>
+
+<p>
+more option plese see the <a href="mupdf%20~/doc/arch/gcc.pdf%2067">Gcc waring options</a>
+</p>
+</div>
+</div>
+<div id="orgf5f8020" class="outline-2">
+<h2 id="orgf5f8020"><span class="section-number-2">4</span> using the preprocessor</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="org3a93f59" class="outline-3">
+<h3 id="org3a93f59"><span class="section-number-3">4.1</span> define marco</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+It is eqal
+</p>
+<pre class="example">
+#include &lt;stdio.h&gt;
+int main(void)
+{
+#ifdef TEST
+    printf("Test mode\n");
+#endif
+    printf("Running ...\n");
+    return 0;
+}
+</pre>
+
+<pre class="example">
+$gcc -Wall -DTEST dtest.c
+</pre>
+<p>
+like using GNU<sub>SOURCE</sub>
+the option -DMORCO can get the effect using in the file.
+</p>
+</div>
+</div>
+<div id="org85d194a" class="outline-3">
+<h3 id="org85d194a"><span class="section-number-3">4.2</span> the temp file</h3>
+<div class="outline-text-3" id="text-4-2">
+<pre class="example">
+$gcc -E hello.c
+$gcc -c -save-temps hello.c
+</pre>
+<p>
+the "-E" option can propocess the c file.
+</p>
+
+<p>
+the "-save-temps" can save the temp file include ".s" ".o" ".i"
+</p>
+</div>
+</div>
+</div>
+<div id="org2e53e0a" class="outline-2">
+<h2 id="org2e53e0a"><span class="section-number-2">5</span> Compile for debug</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+the option "-g"
+</p>
+
+<p>
+when a program segment, it give a core when the "ulimit -c unlimited" is setting.
+</p>
+
+<p>
+You can debugging the code with
+</p>
+<pre class="example">
+$gdb program program-core
+</pre>
+</div>
+</div>
+<div id="org881fb3b" class="outline-2">
+<h2 id="org881fb3b"><span class="section-number-2">6</span> compiling with optimization</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="org525cd79" class="outline-3">
+<h3 id="org525cd79"><span class="section-number-3">6.1</span> a example CSE</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+common subexpression elimination(CSE)
+It cut down the common expression
+</p>
+<pre class="example">
+x = cos(v)*(1+sin(u/2)) + sin(w)*sin(u/2)
+</pre>
+<pre class="example">
+t = sin(u/2)
+x = cos(v)*t + sin(w)*t
+</pre>
+</div>
+</div>
+<div id="orgd111496" class="outline-3">
+<h3 id="orgd111496"><span class="section-number-3">6.2</span> inline funtion</h3>
+</div>
+<div id="org07b2aff" class="outline-3">
+<h3 id="org07b2aff"><span class="section-number-3">6.3</span> speed-space tradeoff</h3>
+<div class="outline-text-3" id="text-6-3">
+</div><div id="orgbd6b79e" class="outline-4">
+<h4 id="orgbd6b79e"><span class="section-number-4">6.3.1</span> loop unrolling</h4>
+</div>
+</div>
+<div id="org38d6934" class="outline-3">
+<h3 id="org38d6934"><span class="section-number-3">6.4</span> scheduling</h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+the cpu allow one or more new instructions to start executing before others have finished.
+</p>
+</div>
+</div>
+<div id="org02b9f44" class="outline-3">
+<h3 id="org02b9f44"><span class="section-number-3">6.5</span> the optimization levels</h3>
+<div class="outline-text-3" id="text-6-5">
+<p>
+-O or -O1
+</p>
+
+<p>
+-O2
+</p>
+
+<p>
+-O3
+</p>
+
+<p>
+-funroll-loops
+</p>
+
+<p>
+-Os
+</p>
+
+<p>
+more see <a href="mupdf%20~/doc/arch/gcc.pdf%20115">Gcc optimization Options</a>
+</p>
+</div>
+
+<div id="orgf2ade61" class="outline-4">
+<h4 id="orgf2ade61"><span class="section-number-4">6.5.1</span> the suggestion for optimazation with debug</h4>
+<div class="outline-text-4" id="text-6-5-1">
+<p>
+The Gcc can compile the  program use optimaztation in combination with the debug option. Many other compiler  do no allow this.
+</p>
+
+<p>
+I have a question. If the -O2 option is trun on and its optimization may be change the code and the bug may occur in this case. So the suggestion that debug with -O0 and release wiht -O2?
+</p>
+</div>
+</div>
+</div>
+<div id="org370edb7" class="outline-3">
+<h3 id="org370edb7"><span class="section-number-3">6.6</span> compiling program cimbination the optimization and wall</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2016-12-27 Tue 22:24</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

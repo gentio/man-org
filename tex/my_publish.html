@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-07 Wed 19:36 -->
+<!-- 2016-12-07 Wed 19:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
@@ -253,100 +253,98 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9376390">1. the error of the result</a>
+<li><a href="#org3027044">1. my format</a>
 <ul>
-<li><a href="#org9e127de">1.1. model error</a></li>
-<li><a href="#org69b2323">1.2. the measuring error</a></li>
-<li><a href="#org50bc552">1.3. the truncatation error</a></li>
-<li><a href="#orgf138444">1.4. round error</a></li>
+<li><a href="#orgef093a5">1.1. some math funtion to write:</a>
+<ul>
+<li><a href="#orgc53fb7b">1.1.1. a table</a></li>
 </ul>
 </li>
-<li><a href="#org0ae6f48">2. absolute error and relative error</a>
-<ul>
-<li><a href="#org5a97ed8">2.1. absolute error</a></li>
 </ul>
 </li>
-<li><a href="#org2ff3b03">3. the vaild value</a></li>
 </ul>
 </div>
 </div>
-<div id="org9376390" class="outline-2">
-<h2 id="org9376390"><span class="section-number-2">1</span> the error of the result</h2>
+<div id="org3027044" class="outline-2">
+<h2 id="org3027044"><span class="section-number-2">1</span> my format</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="org9e127de" class="outline-3">
-<h3 id="org9e127de"><span class="section-number-3">1.1</span> model error</h3>
+<pre class="example">
+\documentclass{article}
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{capation}
+\usepackage{top=1.5,bottom=2cm,left=1.68cm,right=1.68cm}{geometry}
+
+\begin{document}
+\title{A title}
+\author{A author}
+\maketitle
+
+\section{Section One}
+something
+
+\section{Section Two}
+
+
+\subsection{Subsection one}
+\begin{verbatim} % to give a code envirenment in the tex.
+
+\end{verbatim}
+
+\begin{center} % make the text centering in the tex.
+\end{center}
+\textbf{some words} % make the text more strongger.
+\vspace{1cm} % make text have a space line high 1cm
+\includegraphics[scale=0.5]{your_pitcure.png|jpg} % insert the image and you can setting the other argument like width and height.
+\include{something.tex}
+\input{other.tex} % the difference of them is that include make a new page after give a new page.
+\begin{enumerate} % give a item list
+\item one item
+\item two item
+\end{enumerate}
+</pre>
+</div>
+<div id="orgef093a5" class="outline-3">
+<h3 id="orgef093a5"><span class="section-number-3">1.1</span> some math funtion to write:</h3>
 <div class="outline-text-3" id="text-1-1">
+<pre class="example">
+$ a^2 = b^2 + c^2 $
+$ \frac{2}{\sqart{2}} $
+</pre>
 <p>
-the error comes from the difference when we make model.
+make the math funtion like
 </p>
-
-<p>
-The math model come from the practial, having some difference.
-</p>
-</div>
-</div>
-<div id="org69b2323" class="outline-3">
-<h3 id="org69b2323"><span class="section-number-3">1.2</span> the measuring error</h3>
-<div class="outline-text-3" id="text-1-2">
-<p>
-we get the parameter by measuring
-</p>
-</div>
-</div>
-
-<div id="org50bc552" class="outline-3">
-<h3 id="org50bc552"><span class="section-number-3">1.3</span> the truncatation error</h3>
-<div class="outline-text-3" id="text-1-3">
-<p>
-The numerial method we use in the model is an approximate method, so it have some error with the practial model.
-</p>
-</div>
-</div>
-
-<div id="orgf138444" class="outline-3">
-<h3 id="orgf138444"><span class="section-number-3">1.4</span> round error</h3>
-</div>
-</div>
-
-<div id="org0ae6f48" class="outline-2">
-<h2 id="org0ae6f48"><span class="section-number-2">2</span> absolute error and relative error</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="org5a97ed8" class="outline-3">
-<h3 id="org5a97ed8"><span class="section-number-3">2.1</span> absolute error</h3>
-<div class="outline-text-3" id="text-2-1">
-<p>
-give a real number, its approximate is * x<sup>*</sup>, x-x<sup>*</sup> * is the value between the approximate value and real value. we give it a name
-</p>
-
 \begin{equation}
-\varepsilon  = x^* - x
+ a^2 = b^2 + c^2
+
+ \frac {2}{\sqrt{2}}
 \end{equation}
-<p>
-we can't now the precise value. So estimate a value. If exist a postive number &eta;
-</p>
-\begin{equation}
-|\varepsilon(x)| \leq \eta
-\end{equation}
-<p>
-we say <b>&eta;</b>  is the absolute limit of x<sup>*</sup>
-</p>
-</div>
-</div>
 </div>
 
-<div id="org2ff3b03" class="outline-2">
-<h2 id="org2ff3b03"><span class="section-number-2">3</span> the vaild value</h2>
-<div class="outline-text-2" id="text-3">
-<p>
- A number is give by the layout:
+<div id="orgc53fb7b" class="outline-4">
+<h4 id="orgc53fb7b"><span class="section-number-4">1.1.1</span> a table</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<pre class="example">
+\begin{tabular}{p{1cm}|c|l|r}
+\hline
+0 &amp; 1 &amp; 2 &amp; 3 &amp; 4  \\ \hline
+6 &amp; 7 &amp; 8 &amp; 9 &amp; 10  \\ \hline
+\end{tabular}
+</pre>
 \begin{equation}
-=a<sub>0</sub> a<sub>1</sub>
-</p>
+\begin{tabular}{p{1cm}|c|l|r}
+\hline
+0 & 1 & 2 & 3 & 4  \\ \hline
+6 & 7 & 8 & 9 & 10  \\ \hline
+\end{tabular}
+\end{equation}
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-07 Wed 19:36</p>
+<p class="date">Created: 2016-12-07 Wed 19:31</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
