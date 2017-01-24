@@ -1,0 +1,28 @@
+* Overview
+The slackware was said that the oldest distribution. Its offical packages whick can be installd was no more than 1500. It offers a basic envirenment, and you can do the most like others distributions. The difference is that you must compile the software and solve the dependence yourself.
+
+It has a simple packages mangage tool, naming slackpkg. The 3st tools slack-get and netpkg install some packages used usually.
+
+I try the slackpkg and compile software from source. So record them only.
+** Slackpkg
+#+begin_src bash
+# slackpkg update #update the package list
+# slackpkg upgrade-all # download and update the newer packages
+# slackpkg file-search/search #find the package
+#+end_src
+Its mirrors file /etc/slackpkg/mirrors. more see
+** STARTED slack-get
+   :LOGBOOK:
+   CLOCK: [2017-01-24 Tue 22:22]--[2017-01-24 Tue 22:29] =>  0:07
+   :END:
+
+I hasn't use it now.
+** compile package yourself
+Your can find more packages in this website [[https://slackbuilds.org/]]  It offer a build script and the source download. You can see the dependence from the packages readme.
+#+begin_src
+tar xvf **.tar.gz
+mv source.tar.bz **
+cd ** && chmod +x ./**.SlackBuild
+./**.SlackBuild
+#+end_src
+after do it, you can see the packages tgz in the /tmp direction. You can use "installpkg" to install it, although the offical install method is not it.

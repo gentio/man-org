@@ -1,0 +1,6 @@
+* some sort algorithm
+** select sort
+** insert sort
+** merge sort
+** quick sort
+**
